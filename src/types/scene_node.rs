@@ -51,7 +51,6 @@ impl PartialEq for SceneNode {
 
 
 
-
 // class SceneNode : public sf::Transformable, sf::Drawable { 
 // 		virtual sf::FloatRect getHitBox() const;
 //
@@ -143,13 +142,6 @@ impl PartialEq for SceneNode {
 // 	auto removesBegin = std::remove_if(this->children.begin(), this->children.end(), std::mem_fn(&SceneNode::getRemove));
 // 	this->children.erase(removesBegin, this->children.end());
 // 	std::for_each(this->children.begin(), this->children.end(), std::mem_fn(&SceneNode::removeNodes));
-// }
-
-
-// SceneNode& SceneNode::attachChild(std::unique_ptr<SceneNode> child){
-// 	child->setParent(this);
-// 	children.push_back(std::move(child));
-// 	return *children.back();
 // }
 
 

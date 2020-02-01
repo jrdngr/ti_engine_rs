@@ -1,6 +1,6 @@
 use slotmap::{new_key_type, DenseSlotMap};
 
-use crate::types::scene_node::SceneNode;
+use crate::types::SceneNode;
 
 new_key_type!{ pub struct GlobalId; }
 
