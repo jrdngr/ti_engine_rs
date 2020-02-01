@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use crate::types::GlobalId;
+use crate::managers::node_manager::GlobalId;
 
 #[derive(Debug, Clone)]
 pub struct SceneNode {
