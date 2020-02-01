@@ -1,0 +1,8 @@
+[package]
+name = "ti_engine_rs"
+version = "0.1.0"
+authors = ["Jordan Grace <jordan.t.grace@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0"
