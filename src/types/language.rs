@@ -1,7 +1,10 @@
 use std::str::FromStr;
 
-#[allow(non_camel_case_types)]
+// This derive statement automatically implements the traits in parentheses.
+// This works for any built-in trait with an obvious implementation.
+// You an also make your own traits derivable, but that's a little complex.
 #[derive(Debug, Clone, Copy, PartialEq)]
+#[allow(non_camel_case_types)]
 pub enum Language {
     en_US,
     fe_FR,
@@ -10,6 +13,7 @@ pub enum Language {
     ja_JP,
 }
 
+// FromStr is a trait that defines how you parse your type from a string
 impl FromStr for Language {
     type Err = anyhow::Error;
 

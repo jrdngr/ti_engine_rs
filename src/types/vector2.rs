@@ -1,11 +1,18 @@
 use std::ops::{Add, AddAssign, Mul, MulAssign};
 
+
+// This is a generic Vector2 type. There are no restrictions on what T is.
+// We add some bonus features below for certains values of T.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Vector2<T> {
     pub x: T,
     pub y: T,
 }
 
+// Convert a pair to a Vector2
+// e.g. let v = Vector2::from((0, 0))
+// or   let v: Vector2<i32> = (0, 0).into()
+// You get both of these options by implementing the From trait.
 impl<T> From<(T, T)> for Vector2<T> {
     fn from(pair: (T, T)) -> Self {
         Self {
@@ -15,12 +22,15 @@ impl<T> From<(T, T)> for Vector2<T> {
     }
 }
 
+// Adds a magnitude function whenever T is a 64-bit floating point number
 impl Vector2<f64> {
     pub fn magnitude(&self) -> f64 {
         ((self.x * self.x) + (self.y * self.y)).sqrt() 
     }
 }
 
+// Implements the + operator for any T that implements the + operator itself.
+// i.e. If you can do T + T, then you can do Vector<T> + Vector<T>
 impl<T: Add<Output=T>> Add for Vector2<T> {
     type Output = Self;
 
@@ -32,13 +42,15 @@ impl<T: Add<Output=T>> Add for Vector2<T> {
     }
 }
 
-impl<T: Add<Output=T> + Copy> AddAssign for Vector2<T> {
+// Implements the += operator for any T that implements +=
+impl<T: AddAssign> AddAssign for Vector2<T> {
     fn add_assign(&mut self, other: Self) {
-        self.x = self.x + other.x;
-        self.y = self.y + other.y;
+        self.x += other.x;
+        self.y += other.y;
     }
 }
 
+// Implements the * operator for scalar multiplication
 impl<T: Mul<Output=T> + Copy> Mul<T> for Vector2<T> {
     type Output = Self;
 
@@ -50,10 +62,11 @@ impl<T: Mul<Output=T> + Copy> Mul<T> for Vector2<T> {
     }
 }
 
-impl<T: Mul<Output=T> + Copy> MulAssign<T> for Vector2<T> {
+// Implements the *= operator for scalar multiplication
+impl<T: MulAssign + Copy> MulAssign<T> for Vector2<T> {
     fn mul_assign(&mut self, other: T) {
-        self.x = self.x * other;
-        self.y = self.y * other;
+        self.x *= other;
+        self.y *= other;
     }
 }
 
