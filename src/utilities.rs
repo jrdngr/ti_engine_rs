@@ -8,6 +8,14 @@ pub fn to_degrees(radians: f64) -> f64 {
     (radians * 180.0) / PI
 }
 
+// This function does the equivalent of a try/catch block. Rust uses Result types
+// instead of exceptions for error handling. A result looks like this:
+// enum Result<T, E> {
+//     Ok(T),
+//     Err(E),
+// }
+// This means that anything returning a Result can either return a T or an E.
+// You figure out which one it is by using a "match" statement.
 pub fn string_to_int(string: &str) -> i32 {
     match string.parse::<i32>() {
         Ok(num) => num,

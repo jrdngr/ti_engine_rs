@@ -13,7 +13,11 @@ pub enum Language {
     ja_JP,
 }
 
-// FromStr is a trait that defines how you parse your type from a string
+// FromStr is a trait that defines how you parse your type from a string.
+// Note that this doesn't return a Langauge, it returns a Result<Langauge, Error>.
+// Rust doesn't have exceptions. Instead, it uses return types which you then have to
+// check against to determine how to proceed.
+// See the string_to_int function in utilities for an example.
 impl FromStr for Language {
     type Err = anyhow::Error;
 
